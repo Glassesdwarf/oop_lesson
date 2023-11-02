@@ -77,7 +77,7 @@ if __name__ == "__main__":
     account_db.insert(Account("12345", 'saving', "John Doe", 1000.0))
     account_db.insert(Account("67890", 'checking', "Jane Smith", 500.0))
     account_db.insert(Account("54321", 'saving', "Alice Johnson", 750.0))
-    account_db.insert(Account("00015", 'saving', "Doraemon", 50.0))
+   
     # Print the initial account list
     print("Initial account list:")
     print(account_db)
