@@ -20,7 +20,13 @@ class AccountDB:
             if account.account_number == account_num:
                 return account
         return None
-    
+    def delete(self, account_num):
+        index = self.__search_private(account_num)
+        if index != -1:
+            deleted_account = self.account_database.pop(index)
+            print("Deleted account:", deleted_account)
+        else:
+            print("Account not found:", account_num)
     def __str__(self):
         s = ''
         for account in self.account_database:
@@ -63,3 +69,27 @@ my_account_DB.search_public("0003").withdraw(100)
 print(my_account_DB)
 my_account_DB.search_public("0010").deposit(50)
 print(my_account_DB)
+# Test code
+if __name__ == "__main__":
+    account_db = AccountDB()
+
+    # Adding some accounts for testing
+    account_db.insert(Account("12345", "John Doe", 1000.0))
+    account_db.insert(Account("67890", "Jane Smith", 500.0))
+    account_db.insert(Account("54321", "Alice Johnson", 750.0))
+
+    # Print the initial account list
+    print("Initial account list:")
+    print(account_db)
+
+    # Test deleting an account
+    account_num_to_delete = "67890"
+    account_db.delete(account_num_to_delete)
+
+    # Print the updated account list
+    print("\nUpdated account list:")
+    print(account_db)
+
+    # Try deleting an account that doesn't exist
+    account_num_to_delete = "99999"
+    account_db.delete(account_num_to_delete)
